@@ -20,7 +20,7 @@ Mini kræsjkurs i azure functions.
 
 - [basics](docs/basics.md) Kort om hva som får ting til å funke
 - design
-- deploy
+- [deploy](docs/deploy.md) Kort om hvordan deploye til Azure
 
 # License
 
