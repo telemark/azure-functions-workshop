@@ -16,6 +16,12 @@ Mini kræsjkurs i azure functions.
 - installere det du trenger for [utvikling lokalt](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-local)
 - installere [.NET core](https://dotnet.microsoft.com/download)
 
+# Innhold
+
+- [basics](docs/basics.md) Kort om hva som får ting til å funke
+- design
+- deploy
+
 # License
 
 [MIT](LICENSE)
