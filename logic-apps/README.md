@@ -27,7 +27,8 @@
 
 ## Connectors & Triggers
 ### Connectors
-![Blank logic app](./res/blank-logicapp.png)\
+![Blank logic app](./res/blank-logicapp.png)
+
 A connector can contain authentication and other information for a service. This makes it easier to talk to different services in the logic app.
 
 1. Search for and click on the wanted connector
@@ -36,7 +37,8 @@ A connector can contain authentication and other information for a service. This
 
 
 ### Triggers
-![Service Bus Triggers](./res/service-bus-triggers.png)\
+![Service Bus Triggers](./res/service-bus-triggers.png)
+
 Connectors contains triggers will execute the logic app and usually provide some data to process.
 
 1. After the connector is created, you get a list of triggers.
@@ -48,11 +50,13 @@ Connectors contains triggers will execute the logic app and usually provide some
 
 ## Calling function apps
 ![](./res/add-content-to-body-fa.png)
+
 You can call [function apps](../function-apps/README.md) in the logic app by adding them as a step. You can then specify the body of the request to the function app.
 
 
 ### Service Bus content
 ![](./res/la-fa-expression.png)
+
 The content of the service bus is base64 encoded json. You can either decode it in the function app, or straight in the logic app using "Expression".
 ```js
 //  - Convert string to JSON
@@ -68,6 +72,7 @@ The content of the service bus is base64 encoded json. You can either decode it 
 
 ### OpenAPI
 ![](./res/la-fa-openapi.png)
+
 OpenAPI (Swagger) can be used make the function apps more modular. By having a `OpenAPI.yml` file in the trigger´s directory, logic app can use this file to generate input fields in that step.
 Then other function´s outputs (that is also using a OpenAPI scheme) can be inserted into.
 
