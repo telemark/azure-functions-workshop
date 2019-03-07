@@ -1,26 +1,10 @@
-# azure-functions-workshop
+# Azure Workshops
 
-Mini kræsjkurs i azure functions.
+This is a collection of several workshop notes and guides on how to use Azure.
 
-# Mål for dagen
-
-- kunne utvikle Azure functions lokalt
-- kunne deploye Azure functions på Azure plattformen
-- vite litt om ulike triggere for Azure functions
-- vite litt om meldingskøer
-
-# Før du starter
-
-- konto på GitHub
-- konto på Azure
-- installere det du trenger for [utvikling lokalt](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-local)
-- installere [.NET core](https://dotnet.microsoft.com/download)
-
-# Innhold
-
-- [basics](docs/basics.md) Kort om hva som får ting til å funke
-- design
-- [deploy](docs/deploy.md) Kort om hvordan deploye til Azure
+## Library
+- [Function Apps](./function-apps/README.md)
+- [Logic Apps](./logic-apps/README.md)
 
 # License
 
