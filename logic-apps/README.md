@@ -12,7 +12,6 @@
 - [Calling function apps](#Calling-function-apps)
     - [Service Bus content](#Service-Bus-content)
     - [OpenAPI](#OpenAPI)
-        - [Adding a function app with a scheme](#Adding-a-function-app-with-a-scheme)
 - [License](#License)
 
 
@@ -113,9 +112,42 @@ FunctionsProject
 5. Now select the scheme
 6. Now if your scheme is correctly formatted it should show the fields you have defined
 
+#### CORS (Todo)
+[Check out LA IP-ranges](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-limits-and-config#firewall-configuration-ip-addresses)
+
+## Built-in tools
+Logic apps has a few built-in control functions, all of these integrate very well with OpenAPI enabled function apps (and other built-in functions).
+- Conditions
+- For-each
+- Scope
+- Switch
+- Terminate
+- Until
+
+### Scopes
+Scopes are very useful for error-handling, as it returns an error if any of the steps inside returns an error or timeout. But the logic app continues to run, this then be used to create a try-catch of sorts.
+#### Get status
+To get the status of a scope we can use an "Expression" in the logic app.\
+`result('Scope')[0]['status']`\
+This expression returns the status of the first scope it finds with the name 'Scope'.
+
+The status can be either of these values:
+`['Succeeded', 'Failed', 'Aborted']``
+
+You can then either use one of the built-in tools to decide what happens, or use the "Configure Run-after".
+#### Run-after
+Run-after decides if the next step should be run, based off the previous step's status code. This can be very useful for error-handling.
+
+Run-after can be configured in the context menu of the step. This menu can be found at the three dots in the upper-left corner of the step.
+Here you can choose when it should run.
+## Service bus as trigger
+### Auto-complete
+### Peek-lock
+### Parse JSON
+
+
 
 ## TODO
-- [ ] Check if a OpenAPI scheme can be manually added to a v2 function.s
 - [ ] Write: Using scopes for error-handling
 - [ ] Write: Configure Run-after
 - [ ] Write: Service bus auto-complete vs peek-lock

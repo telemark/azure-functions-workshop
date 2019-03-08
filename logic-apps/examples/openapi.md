@@ -1,3 +1,6 @@
+# OpenAPI.yml example
+
+```yaml
 swagger: '2.0'
 info:
   title: tfkparameterinterface.azurewebsites.net
@@ -112,3 +115,5 @@ securityDefinitions:
     type: apiKey
     name: code
     in: query
+
+```
