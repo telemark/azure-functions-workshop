@@ -127,36 +127,63 @@ Logic apps has a few built-in control functions, all of these integrate very wel
 ### Scopes
 Scopes are very useful for error-handling, as it returns an error if any of the steps inside returns an error or timeout. But the logic app continues to run, this then be used to create a try-catch of sorts.
 #### Get status
+![Status expression](./res/scope-status-expression.png)
+
 To get the status of a scope we can use an "Expression" in the logic app.\
 `result('Scope')[0]['status']`\
 This expression returns the status of the first scope it finds with the name 'Scope'.
 
 The status can be either of these values:
-`['Succeeded', 'Failed', 'Aborted']``
+`['Succeeded', 'Failed', 'Aborted']`
 
 You can then either use one of the built-in tools to decide what happens, or use the "Configure Run-after".
 #### Run-after
+![Run-after window](./res/run-after.png)
+
 Run-after decides if the next step should be run, based off the previous step's status code. This can be very useful for error-handling.
 
 Run-after can be configured in the context menu of the step. This menu can be found at the three dots in the upper-left corner of the step.
 Here you can choose when it should run.
 ## Service bus as trigger
-### Auto-complete
-### Peek-lock
-### Parse JSON
+!dis[Service-bus triggers](./res/servicebus-triggers.png)
 
+The service-bus has several triggers for the logic app. They are pretty self-explanatory.
+
+But auto-complete and peek-lock is repeated in all of them.
+### Auto-complete vs peek-lock
+#### Auto-complete
+- Marks the message as complete as soon as it's read.
+- Can be read throughout the logic app.
+- Impossible for multi-execution of the same message.
+#### Peek-lock
+- Locks the message as soon as it's read.
+- Can be read throughout the logic app.
+- It's possible to execute the same message unlimited times... (Disable the app at it's dashboard if this happens)
+- Locked for a pre-defined time (default: 60s), other apps will not execute it.
+---
+**Warning:** \
+Microsoft did a recent change in how instances work.
+Instead of spinning up the required instances on the spot up to the configured max limit.
+
+It will spin up one for every message in the queue (regardless of max limit). Then only execute up to the limit, the rest are set to a waiting state.
+
+This can cause unlimited asynchronous loops if you use peek-locks.
+
+(Do a little brainstorming on how this can occour.\
+Material: [Stackoverflow.com](https://stackoverflow.com/questions/51633843))
+
+---
+### Parse JSON
+Service-bus queue parsing (todo)
 
 
 ## TODO
-- [ ] Write: Using scopes for error-handling
-- [ ] Write: Configure Run-after
-- [ ] Write: Service bus auto-complete vs peek-lock
-- [ ] Write: How peek-lock works and how to configure it
+- [ ] Make a table of use-cases and how all service-bus triggers work.
 
 
 # License
 
-[MIT](LICENSE)
+[MIT](../LICENSE)
 
 
 
